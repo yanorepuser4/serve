@@ -13,7 +13,7 @@ concurrency:
 jobs:
   regression-gpu:
     # creates workflows on self hosted runner
-    runs-on: [macOS-latest]
+    runs-on: [macOS-14]
     steps:
       - name: Clean up previous run
         run: |
