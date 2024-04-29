@@ -4,13 +4,13 @@ llama-2-13b:
     benchmark_engine: "ab"
     url: https://torchserve.s3.amazonaws.com/mar_files/llama2-7b-chat/llama-2-13b.mar
     workers:
-      - 2
+      - 4
     batch_delay: 100
     batch_size:
       - 1
     input: "./examples/large_models/gpt_fast/request.json"
     requests: 1000
-    concurrency: 2
+    concurrency: 4
     backend_profiling: False
     exec_env: "local"
     processors:
