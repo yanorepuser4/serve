@@ -202,7 +202,7 @@ def run_benchmark(bm_config):
             shutil.rmtree(TS_LOGS_PATH, ignore_errors=True)
             shutil.rmtree(BENCHMARK_TMP_PATH, ignore_errors=True)
             cmd = (
-                "python ./benchmarks/benchmark-ab.py -bb locust --tmp_dir /tmp --report_location /tmp --config_properties "
+                "python ./benchmarks/benchmark-ab.py --tmp_dir /tmp --report_location /tmp --config_properties "
                 "./benchmarks/config.properties --config {}/{}".format(
                     bm_config["model_config_path"], model_json_config
                 )
