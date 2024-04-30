@@ -3,6 +3,7 @@ import logging
 import os
 import time
 from pathlib import Path
+import zipfile
 
 import torch
 from generate import (
@@ -59,7 +60,13 @@ class GptHandler(BaseHandler):
 
             torch.cuda.set_device(self.local_rank)
 
-        checkpoint_path = Path(ctx.model_yaml_config["handler"]["converted_ckpt_dir"])
+        model_dir = ctx.system_properties.get("model_dir")
+        with zipfile.ZipFile(model_dir + "/checkpoints.zip", "r") as zip_ref:
+            zip_ref.extractall(model_dir + "/checkpoints")
+            
+        setup_path = os.path.join(model_dir, "checkpoints/Llama-2-13b-chat/model_int4.g32.pth")
+        checkpoint_path = Path(setup_path)
+        # checkpoint_path = Path(ctx.model_yaml_config["handler"]["converted_ckpt_dir"])
         assert checkpoint_path.is_file(), checkpoint_path
 
         tokenizer_path = checkpoint_path.parent / "tokenizer.model"
