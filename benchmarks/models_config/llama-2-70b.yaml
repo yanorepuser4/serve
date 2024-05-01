@@ -1,7 +1,7 @@
 ---
 llama-2-70b:
   eager-mode:
-    benchmark_backend: "locust"
+    benchmark_backend: "ab"
     url: https://torchserve.s3.amazonaws.com/mar_files/llama2-7b-chat/llama-2-70b.mar
     workers:
       - 4
