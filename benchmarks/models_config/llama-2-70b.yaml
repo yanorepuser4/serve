@@ -1,8 +1,8 @@
 ---
-llama-2-13b:
+llama-2-70b:
   eager-mode:
     benchmark_backend: "locust"
-    url: https://torchserve.s3.amazonaws.com/mar_files/llama2-7b-chat/llama-2-13b-tp.mar
+    url: https://torchserve.s3.amazonaws.com/mar_files/llama2-7b-chat/llama-2-70b.mar
     workers:
       - 4
     batch_delay: 100
