@@ -2,7 +2,7 @@
 llama-2-13b:
   int8:
     benchmark_engine: "ab"
-    url: https://torchserve.s3.amazonaws.com/mar_files/llama2-7b-chat/llama-2-13b-int8.mar
+    url: https://torchserve.s3.amazonaws.com/mar_files/llama2-7b-chat/llama-2-13b-int8-tp.mar
     workers:
       - 4
     batch_delay: 100
@@ -18,7 +18,7 @@ llama-2-13b:
     stream: "false"
   int4:
     benchmark_engine: "ab"
-    url: https://torchserve.s3.amazonaws.com/mar_files/llama2-7b-chat/llama-2-13b-int4.mar
+    url: https://torchserve.s3.amazonaws.com/mar_files/llama2-7b-chat/llama-2-13b-int4-tp.mar
     workers:
       - 4
     batch_delay: 100
