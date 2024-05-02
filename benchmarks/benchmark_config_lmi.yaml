@@ -11,7 +11,7 @@ ts_version:
 models:
   - "llama-2-7b.yaml"
   - "llama-2-13b.yaml"
-  # - "llama-2-70b.yaml"
+  - "llama-2-70b.yaml"
 
 # benchmark on "cpu" or "gpu".
 # "cpu" is set if "hardware" is not specified
