@@ -2,7 +2,7 @@
 llama-2-70b:
   eager-mode:
     benchmark_backend: "ab"
-    url: https://torchserve.s3.amazonaws.com/mar_files/llama-2/llama-2-70b-int8.mar
+    url: https://torchserve.s3.amazonaws.com/mar_files/llama-2/llama-2-70b-int4.mar
     workers:
       - 1
     batch_delay: 100
