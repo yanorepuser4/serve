@@ -4,13 +4,13 @@ llama-2-70b:
     benchmark_backend: "ab"
     url: https://torchserve.s3.amazonaws.com/mar_files/llama-2/llama-2-70b-int4-tp.mar
     workers:
-      - 4
+      - 1
     batch_delay: 100
     batch_size:
       - 1
     input: "./examples/large_models/gpt_fast/request.json"
     requests: 100
-    concurrency: 4
+    concurrency: 1
     backend_profiling: False
     exec_env: "local"
     processors:
