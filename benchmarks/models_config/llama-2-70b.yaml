@@ -6,6 +6,7 @@ llama-2-70b:
     workers:
       - 1
     batch_delay: 100
+    responseTimeout: 500
     batch_size:
       - 1
     input: "./examples/large_models/gpt_fast/request.json"
