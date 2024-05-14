@@ -83,12 +83,14 @@ public class Model {
     private boolean useJobTicket;
     private AtomicInteger numJobTickets;
     private boolean continuousBatching;
+    private boolean asyncCommunication;
     private boolean useVenv;
 
     public Model(ModelArchive modelArchive, int queueSize) {
         this.modelArchive = modelArchive;
         if (modelArchive != null && modelArchive.getModelConfig() != null) {
             continuousBatching = modelArchive.getModelConfig().isContinuousBatching();
+            asyncCommunication = modelArchive.getModelConfig().isAsyncCommunication();
             useVenv = modelArchive.getModelConfig().getUseVenv();
             if (modelArchive.getModelConfig().getParallelLevel() > 0
                     && modelArchive.getModelConfig().getParallelType()
@@ -636,6 +638,10 @@ public class Model {
 
     public boolean isContinuousBatching() {
         return continuousBatching;
+    }
+
+    public boolean isAsyncCommunication() {
+        return asyncCommunication;
     }
 
     public boolean isUseVenv() {
