@@ -1,9 +1,12 @@
-name: Benchmark torchserve nightly
+name: Benchmark LMI torchserve nightly
 
 on:
-  run every day at 2:15am
-  schedule:
-    - cron:  '15 02 * * *'
+  # run every day at 2:15am
+  # schedule:
+  #   - cron:  '15 02 * * *'
+  push:
+    branches:
+      - benchmark_update
   
 jobs:
   nightly:
@@ -38,26 +41,19 @@ jobs:
         uses: actions/checkout@v3
         with:
           submodules: recursive
-      - name: Install dependencies
-        run: |
-          sudo apt-get update -y
-          sudo apt-get install -y apache2-utils
-          pip install sentencepiece 
-          pip install -r benchmarks/requirements-ab.txt
-      - name: Benchmark cpu nightly
-        if: ${{ matrix.hardware == 'cpu' }}
-        run: python benchmarks/auto_benchmark.py --input benchmarks/benchmark_config_cpu.yaml --skip false
-      - name: Benchmark gpu nightly
-        if: ${{ matrix.hardware == 'gpu' }}
-        run: python benchmarks/auto_benchmark.py --input benchmarks/benchmark_config_gpu.yaml --skip false
-      - name: Benchmark lmi nightly
-        if: ${{ matrix.hardware == 'lmi' }}
-        run: python benchmarks/auto_benchmark.py --input benchmarks/benchmark_config_lmi.yaml --skip false
-      - name: Benchmark inf2 nightly
-        if: ${{ matrix.hardware == 'inf2' }}
-        env:
-          NEURON_RT_NUM_CORES: 1
-        run: python benchmarks/auto_benchmark.py --input benchmarks/benchmark_config_neuronx.yaml --skip false
+      - name: Install awscli
+        run |
+          pip install awscli
+          aws s3 cp s3://torchserve/mar_files/llama-2/Llama-2-7b-chat-hf/ . --recursive
+          
+      # - name: Install dependencies
+      #   run: |
+      #     sudo apt-get update -y
+      #     sudo apt-get install -y apache2-utils
+      #     pip install sentencepiece 
+      #     pip install -r benchmarks/requirements-ab.txt
+      # - name: Benchmark lmi nightly
+      #   run: python benchmarks/auto_benchmark.py --input benchmarks/benchmark_config_lmi.yaml --skip false
       # - name: Save benchmark artifacts
       #   uses: actions/upload-artifact@v2
       #   with:
