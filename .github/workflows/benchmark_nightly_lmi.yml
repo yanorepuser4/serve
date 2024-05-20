@@ -42,7 +42,7 @@ jobs:
         with:
           submodules: recursive
       - name: Install awscli
-        run |
+        run: |
           pip install awscli
           aws s3 cp s3://torchserve/mar_files/llama-2/Llama-2-7b-chat-hf/ . --recursive
           
