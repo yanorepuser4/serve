@@ -9,9 +9,9 @@ ts_version:
 # a list of model configure yaml files defined in benchmarks/models_config
 # or a list of model configure yaml files with full path
 models:
-  - "llama-2-7b.yaml"
+  #- "llama-2-7b.yaml"
   #- "llama-2-13b.yaml"
-  #- "llama-2-70b.yaml"
+  - "llama-2-70b.yaml"
 
 # benchmark on "cpu" or "gpu".
 # "cpu" is set if "hardware" is not specified
