@@ -53,6 +53,9 @@ jobs:
           pip install -r benchmarks/requirements-ab.txt
       - name: Benchmark lmi nightly
         run: python benchmarks/auto_benchmark.py --input benchmarks/benchmark_config_lmi.yaml --skip false
+      - name: Clean up weights
+        run: |
+          rm -rf /home/ubuntu/Llama-2-7b-chat-hf
       # - name: Save benchmark artifacts
       #   uses: actions/upload-artifact@v2
       #   with:
