@@ -2,7 +2,7 @@
 llama-2-7b:
   int8:
     benchmark_engine: "ab"
-    url: https://torchserve.s3.amazonaws.com/mar_files/llama-2/llama-2-7b-int8.mar
+    url: https://torchserve.s3.amazonaws.com/mar_files/llama-2/mar+files/llama-2-7b-int8.mar
     workers:
       - 4
     batch_delay: 100
@@ -16,9 +16,9 @@ llama-2-7b:
     processors:
       - "gpus": "all"
     stream: "false"
-  int4:
+  base:
     benchmark_engine: "ab"
-    url: https://torchserve.s3.amazonaws.com/mar_files/llama-2/llama-2-7b-int4.mar
+    url: https://torchserve.s3.amazonaws.com/mar_files/llama-2/mar+files/llama-2-7b-base.mar
     workers:
       - 4
     batch_delay: 100
